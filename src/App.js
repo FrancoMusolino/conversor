@@ -1,8 +1,8 @@
 import React from "react";
-import { Box } from "@chakra-ui/react";
+import Routes from "./routes/Routes";
 
 function App() {
-  return <Box bgColor="brand.primary">Hola mundoooo</Box>;
+  return <Routes />;
 }
 
 export default App;

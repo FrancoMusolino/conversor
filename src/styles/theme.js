@@ -4,6 +4,7 @@ const colors = {
   brand: {
     primary: "#F63356",
     background: "#1A1A1A",
+    textGray: "#747474",
   },
 };
 
