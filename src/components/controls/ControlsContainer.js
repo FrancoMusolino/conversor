@@ -7,7 +7,6 @@ const ControlsContainer = () => {
   return (
     <Grid
       width='375px'
-      margin='0 auto'
       padding='2.5'
       templateColumns='repeat(4, 60px)'
       justifyContent='center'
