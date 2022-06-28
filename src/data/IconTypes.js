@@ -1,0 +1,4 @@
+export const INVERT = 'INVERT',
+  DELETEALL = 'DELETEALL',
+  DELETE = 'DELETE',
+  SEND = 'SEND';
