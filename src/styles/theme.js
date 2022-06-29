@@ -8,4 +8,19 @@ const colors = {
   },
 };
 
-export const theme = extendTheme({ colors });
+const styles = {
+  global: {
+    body: {
+      WebkitTapHighlightColor: 'transparent',
+      fontFamily: 'Poppins,  sans-serif;',
+    },
+    a: {
+      textDecoration: 'none',
+    },
+  },
+};
+
+export const theme = extendTheme({
+  colors,
+  styles,
+});

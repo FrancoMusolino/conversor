@@ -6,6 +6,7 @@ const Layout = ({ children }) => {
     <Container maxW='container.sm' centerContent>
       <header>SOY UN HEADER</header>
       {children}
+      <footer>Hola pa</footer>
     </Container>
   );
 };

@@ -14,13 +14,13 @@ const SingleControl = (props) => {
     case 'number':
       return <NumberButton {...rest} />;
     case INVERT:
-      return <InvertButton />;
+      return <InvertButton {...rest} />;
     case DELETEALL:
-      return <DeleteAllButton />;
+      return <DeleteAllButton {...rest} />;
     case DELETE:
-      return <DeleteButton />;
+      return <DeleteButton {...rest} />;
     case SEND:
-      return <SubmitButton />;
+      return <SubmitButton {...rest} />;
     default:
       return null;
   }

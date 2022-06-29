@@ -1,4 +1,7 @@
 import { INVERT, DELETEALL, DELETE, SEND } from './IconTypes';
+import { FaArrowsAltV } from 'react-icons/fa';
+import { FiDelete } from 'react-icons/fi';
+import { AiOutlineCheck } from 'react-icons/ai';
 
 export const controls = [
   {
@@ -14,7 +17,7 @@ export const controls = [
     type: 'number',
   },
   {
-    value: INVERT,
+    value: FaArrowsAltV,
     type: INVERT,
   },
   {
@@ -30,7 +33,7 @@ export const controls = [
     type: 'number',
   },
   {
-    value: DELETEALL,
+    value: 'C',
     type: DELETEALL,
   },
   {
@@ -46,7 +49,7 @@ export const controls = [
     type: 'number',
   },
   {
-    value: DELETE,
+    value: FiDelete,
     type: DELETE,
   },
   {
@@ -58,7 +61,11 @@ export const controls = [
     type: 'number',
   },
   {
-    value: SEND,
+    value: '.',
+    type: 'number',
+  },
+  {
+    value: AiOutlineCheck,
     type: SEND,
   },
 ];

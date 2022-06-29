@@ -7,10 +7,9 @@ const ControlsContainer = () => {
   return (
     <Grid
       width='375px'
-      padding='2.5'
       templateColumns='repeat(4, 60px)'
       justifyContent='center'
-      gap={5}
+      gap={4}
     >
       {controls?.map((control) => (
         <GridItem justifySelf='center' key={control.value}>
