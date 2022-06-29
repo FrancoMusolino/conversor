@@ -5,7 +5,7 @@ import Button from './Button';
 const DeleteAllButton = ({ value }) => {
   return (
     <Button>
-      <Text fontSize='3xl' color='red'>
+      <Text fontSize='3xl' color='brand.primary'>
         {value}
       </Text>
     </Button>

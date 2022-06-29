@@ -6,7 +6,7 @@ import Button from './Button';
 const DeleteButton = ({ value }) => {
   return (
     <Button>
-      <Icon fontSize='3xl' color='red' as={value} />
+      <Icon fontSize='3xl' color='brand.primary' as={value} />
     </Button>
   );
 };

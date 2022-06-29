@@ -1,12 +1,14 @@
 import React from 'react';
 import { Container } from '@chakra-ui/react';
+import Footer from './Footer';
+import Header from './Header';
 
 const Layout = ({ children }) => {
   return (
     <Container maxW='container.sm' centerContent>
-      <header>SOY UN HEADER</header>
+      <Header />
       {children}
-      <footer>Hola pa</footer>
+      <Footer />
     </Container>
   );
 };

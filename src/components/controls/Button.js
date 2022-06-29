@@ -17,6 +17,7 @@ const Button = ({ children, handleClick = () => console.log('hola') }) => {
         borderRadius='full'
         justifyContent='center'
         cursor='pointer'
+        userSelect='none'
         onClick={() => handleClick()}
       >
         <Center>{children}</Center>

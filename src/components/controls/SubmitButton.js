@@ -6,7 +6,7 @@ import Button from './Button';
 const SubmitButton = ({ value }) => {
   return (
     <Button>
-      <Icon fontSize='3xl' color='green' as={value} />
+      <Icon fontSize='3xl' color='status.success' as={value} />
     </Button>
   );
 };

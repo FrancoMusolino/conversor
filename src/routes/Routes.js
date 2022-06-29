@@ -9,6 +9,7 @@ const Routes = () => {
     <ReactDomRoutes>
       <Route path='/' element={<Home />} />
       <Route path='history' element={<History />} />
+      <Route path='*' element={<h1>Que paso aca?</h1>} />
     </ReactDomRoutes>
   );
 };

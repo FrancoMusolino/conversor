@@ -6,7 +6,7 @@ import Button from './Button';
 const InvertButton = ({ value }) => {
   return (
     <Button>
-      <Icon fontSize='3xl' color='yellow' as={value} />
+      <Icon fontSize='3xl' color='status.warn' as={value} />
     </Button>
   );
 };
