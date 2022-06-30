@@ -5,6 +5,7 @@ const colors = {
     primary: '#F63356',
     background: '#1A1A1A',
     textGray: '#747474',
+    textDarkGray: '#363636',
     textWhite: '#CDCDCD',
   },
   status: {
@@ -18,6 +19,8 @@ const styles = {
     body: {
       WebkitTapHighlightColor: 'transparent',
       fontFamily: 'Poppins,  sans-serif;',
+      backgroundColor: '#1A1A1A',
+      color: '#747474',
     },
     a: {
       textDecoration: 'none',

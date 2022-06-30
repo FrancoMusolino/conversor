@@ -4,9 +4,7 @@ import { Text } from '@chakra-ui/react';
 const Footer = () => {
   return (
     <footer>
-      <Text fontSize='sm' color='brand.textGray'>
-        Confíamos en El Plan 🏎️©
-      </Text>
+      <Text fontSize='sm'>Confíamos en El Plan 🏎️©</Text>
     </footer>
   );
 };

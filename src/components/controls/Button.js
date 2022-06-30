@@ -13,7 +13,6 @@ const Button = ({ children, handleClick = () => console.log('hola') }) => {
         width='60px'
         height='60px'
         bgColor='brand.background'
-        color='brand.textGray'
         borderRadius='full'
         justifyContent='center'
         cursor='pointer'

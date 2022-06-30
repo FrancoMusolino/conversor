@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from '@chakra-ui/react';
+import { Container, Stack } from '@chakra-ui/react';
 import Footer from './Footer';
 import Header from './Header';
 
