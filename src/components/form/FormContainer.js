@@ -5,7 +5,13 @@ import Form from './Form';
 
 const FormContainer = () => {
   return (
-    <Stack direction='column' gap={8} textAlign='center'>
+    <Stack
+      height='40vh'
+      direction='column'
+      justifyContent='center'
+      gap={6}
+      textAlign='center'
+    >
       <Form />
       <Text fontSize='sm' color='brand.textDarkGray'>
         Ultíma conversión 04/05/2021

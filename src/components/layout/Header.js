@@ -6,7 +6,8 @@ import LinkItem from './LinkItem';
 const Header = () => {
   return (
     <Stack
-      height='90px'
+      as='header'
+      height='80px'
       width='255px'
       direction='row'
       justifyContent='space-between'

@@ -12,7 +12,9 @@ const Layout = ({ children }) => {
       centerContent
     >
       <Header />
-      {children}
+      <Stack as='main' height='86vh' justifyContent='space-around'>
+        {children}
+      </Stack>
       <Footer />
     </Container>
   );

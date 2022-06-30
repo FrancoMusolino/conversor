@@ -42,7 +42,7 @@ const FormInput = () => {
           </Select>
         </Flex>
         <Text width='50%' overflowX='scroll' maxH='48px'>
-          Acá va el input pa
+          0
         </Text>
       </Stack>
     </Box>

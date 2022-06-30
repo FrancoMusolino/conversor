@@ -1,11 +1,11 @@
 import React from 'react';
-import { Text } from '@chakra-ui/react';
+import { Stack, Text } from '@chakra-ui/react';
 
 const Footer = () => {
   return (
-    <footer>
+    <Stack as='footer' paddingBottom='2'>
       <Text fontSize='sm'>Confíamos en El Plan 🏎️©</Text>
-    </footer>
+    </Stack>
   );
 };
 
