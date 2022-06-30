@@ -8,6 +8,7 @@ import {
   Box,
   useQuery,
 } from '@chakra-ui/react';
+import CurrencyIcon from './CurrencyIcon';
 
 const FormInput = () => {
   // useQuery('currencies', fetchCurrencies)
@@ -21,25 +22,28 @@ const FormInput = () => {
         alignItems='center'
       >
         <Flex alignItems='center' justifyContent='space-around' width='50%'>
-          <FormLabel margin={0} htmlFor='currencies'>
-            Logo
+          <FormLabel width='15%' margin={0} htmlFor='currencies'>
+            <CurrencyIcon />
           </FormLabel>
           <Select
+            paddingLeft={3}
             id='currencies'
             focusBorderColor='transparent'
             icon=''
             size='lg'
             border='none'
             placeholder='ARS'
-            _focus={{
-              backgroundColor: 'green',
-            }}
+            // _focus={{
+            //   backgroundColor: 'green',
+            // }}
           >
             <option value='option1'>Option 1hgdflhsghdgihjgsldj</option>
             <option value='option2'>Option 2</option>
           </Select>
         </Flex>
-        <Text width='50%'>Acá va el input pa</Text>
+        <Text width='50%' overflowX='scroll' maxH='48px'>
+          Acá va el input pa
+        </Text>
       </Stack>
     </Box>
   );

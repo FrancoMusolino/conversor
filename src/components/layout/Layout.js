@@ -5,7 +5,12 @@ import Header from './Header';
 
 const Layout = ({ children }) => {
   return (
-    <Container maxW='container.sm' centerContent>
+    <Container
+      height='100vh'
+      justifyContent='space-between'
+      maxW='container.sm'
+      centerContent
+    >
       <Header />
       {children}
       <Footer />

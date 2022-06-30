@@ -8,7 +8,7 @@ const Form = () => {
     <Formik>
       <Stack direction='column' gap={8}>
         <FormInput />
-        <Box>Chau</Box>
+        <FormInput />
       </Stack>
     </Formik>
   );
