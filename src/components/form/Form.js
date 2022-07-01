@@ -1,16 +1,15 @@
 import React from 'react';
-import { Formik } from 'formik';
-import { Box, Stack } from '@chakra-ui/react';
+
+import { Stack } from '@chakra-ui/react';
+
 import FormInput from './FormInput';
 
-const Form = () => {
+const Form = ({ name, options }) => {
   return (
-    <Formik>
-      <Stack direction='column' gap={8}>
-        <FormInput />
-        <FormInput />
-      </Stack>
-    </Formik>
+    <Stack direction='column' gap={8}>
+      <FormInput name={name} options={options} />
+      {/* <FormInput {...data} /> */}
+    </Stack>
   );
 };
 

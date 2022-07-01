@@ -9,8 +9,9 @@ import {
   useQuery,
 } from '@chakra-ui/react';
 import CurrencyIcon from './CurrencyIcon';
+import { Field } from 'formik';
 
-const FormInput = () => {
+const FormInput = ({ name, options }) => {
   // useQuery('currencies', fetchCurrencies)
 
   return (
@@ -25,7 +26,16 @@ const FormInput = () => {
           <FormLabel width='15%' margin={0} htmlFor='currencies'>
             <CurrencyIcon />
           </FormLabel>
-          <Select
+
+          <Field as='select' name={name}>
+            {options?.map((option) => (
+              <option key={option.key} value={option.value}>
+                {option.currencyName}
+              </option>
+            ))}
+          </Field>
+
+          {/* <Select
             paddingLeft={3}
             id='currencies'
             focusBorderColor='transparent'
@@ -36,10 +46,7 @@ const FormInput = () => {
             // _focus={{
             //   backgroundColor: 'green',
             // }}
-          >
-            <option value='option1'>Option 1hgdflhsghdgihjgsldj</option>
-            <option value='option2'>Option 2</option>
-          </Select>
+          ></Select> */}
         </Flex>
         <Text width='50%' overflowX='scroll' maxH='48px'>
           0

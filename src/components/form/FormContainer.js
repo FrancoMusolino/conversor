@@ -3,7 +3,7 @@ import { Stack, Text } from '@chakra-ui/react';
 
 import Form from './Form';
 
-const FormContainer = () => {
+const FormContainer = ({ name, options }) => {
   return (
     <Stack
       height='40vh'
@@ -12,7 +12,7 @@ const FormContainer = () => {
       gap={6}
       textAlign='center'
     >
-      <Form />
+      <Form name={name} options={options} />
       <Text fontSize='sm' color='brand.textDarkGray'>
         Ultíma conversión 04/05/2021
       </Text>

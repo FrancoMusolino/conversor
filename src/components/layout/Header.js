@@ -1,6 +1,5 @@
 import React from 'react';
 import { Stack } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
 import LinkItem from './LinkItem';
 
 const Header = () => {

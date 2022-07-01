@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Box, Stack, Text } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 
 const LinkItem = ({ path, text, toRight = false }) => {
+  const [isMounting, setIsMounting] = useState(true);
+  useEffect(() => setIsMounting(false), []);
+
   return (
     <NavLink to={path}>
       {({ isActive }) => (
@@ -19,7 +22,10 @@ const LinkItem = ({ path, text, toRight = false }) => {
 
           {isActive ? (
             <motion.div
-              initial={toRight ? { translateX: 100 } : { translateX: -100 }}
+              initial={
+                isMounting ||
+                (toRight ? { translateX: 100 } : { translateX: -100 })
+              }
               animate={{ translateX: 0 }}
               exit={toRight ? { translateX: -100 } : { translateX: 100 }}
             >
@@ -32,7 +38,7 @@ const LinkItem = ({ path, text, toRight = false }) => {
               ></Box>
             </motion.div>
           ) : (
-            <Box width='100%' height='3px'></Box>
+            <Box width='100%' height='3px' />
           )}
         </Stack>
       )}
