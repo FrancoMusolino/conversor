@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import * as Yup from 'yup';
 import { useQuery } from 'react-query';
 import { Formik, Form as FormikForm } from 'formik';
 
@@ -24,25 +25,26 @@ const Home = () => {
   });
 
   const initialValues = {
-    selectOption: '',
+    fromCurrency: '',
   };
+
+  const validationSchema = Yup.object({
+    fromCurrency: Yup.string().required('Es obligatorio este campo pa'),
+  });
 
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={(values) => console.log(values)}
-      // validationSchema={{}}
-    >
-      {(props) => {
-        console.log(props);
-
-        return (
-          <FormikForm>
-            <FormContainer name='selectOption' options={data?.data} />
-            <ControlsContainer />
-          </FormikForm>
-        );
+      onSubmit={(values, actions) => {
+        console.log(values);
+        console.log(actions);
       }}
+      validationSchema={validationSchema}
+    >
+      <FormikForm>
+        <FormContainer name='fromCurrency' options={data?.data} />
+        <ControlsContainer />
+      </FormikForm>
     </Formik>
   );
 };

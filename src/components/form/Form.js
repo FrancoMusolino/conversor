@@ -6,9 +6,9 @@ import FormInput from './FormInput';
 
 const Form = ({ name, options }) => {
   return (
-    <Stack direction='column' gap={8}>
+    <Stack direction='column' gap='30px'>
       <FormInput name={name} options={options} />
-      {/* <FormInput {...data} /> */}
+      <FormInput />
     </Stack>
   );
 };
