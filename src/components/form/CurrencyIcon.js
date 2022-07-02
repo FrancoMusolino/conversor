@@ -2,13 +2,15 @@ import React from 'react';
 import { formatCurrency } from '../../utils';
 
 import { Center, Flex, Icon, Text } from '@chakra-ui/react';
-import { RiCoinsFill } from 'react-icons/ri';
+import { RiCoinsLine } from 'react-icons/ri';
 
 const CurrencyIcon = ({ currency }) => {
+  const prettyCurrency = currency && formatCurrency(currency);
+
   return (
     <Flex
-      width='45px'
-      height='45px'
+      width='41px'
+      height='41px'
       bgColor='brand.textGray'
       borderRadius='full'
       justifyContent='center'
@@ -16,13 +18,17 @@ const CurrencyIcon = ({ currency }) => {
     >
       <Center fontSize='2xl' color='brand.primary'>
         {!currency ? (
-          <Icon fontSize='2xl' as={RiCoinsFill} />
+          <Icon fontSize='3xl' as={RiCoinsLine} />
         ) : (
           <>
-            {formatCurrency(currency).length > 2 ? (
-              <Text fontSize='md'>{formatCurrency(currency)}</Text>
+            {prettyCurrency.length > 1 ? (
+              prettyCurrency.length > 2 ? (
+                <Text fontSize='md'>{prettyCurrency}</Text>
+              ) : (
+                <Text fontSize='2xl'>{prettyCurrency}</Text>
+              )
             ) : (
-              <Text fontSize='2xl'>{formatCurrency(currency)}</Text>
+              <Text fontSize='3xl'>{prettyCurrency}</Text>
             )}
           </>
         )}

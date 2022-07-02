@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import * as Yup from 'yup';
 import { useQuery } from 'react-query';
-import { Formik, Form as FormikForm } from 'formik';
+import { Formik, Form } from 'formik';
 
 import ControlsContainer from '../components/controls/ControlsContainer';
 import FormContainer from '../components/form/FormContainer';
@@ -41,10 +41,10 @@ const Home = () => {
       }}
       validationSchema={validationSchema}
     >
-      <FormikForm>
+      <Form>
         <FormContainer name='fromCurrency' options={data?.data} />
         <ControlsContainer />
-      </FormikForm>
+      </Form>
     </Formik>
   );
 };
