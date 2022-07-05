@@ -1,31 +1,15 @@
 import React from 'react';
-import axios from 'axios';
 import * as Yup from 'yup';
-import { useQuery } from 'react-query';
-import { Formik, Form } from 'formik';
+import { Formik, Form as FormikForm } from 'formik';
+import { Stack, Center } from '@chakra-ui/react';
 
+import FormSelect from '../components/form/FormSelect';
 import ControlsContainer from '../components/controls/ControlsContainer';
-import FormContainer from '../components/form/FormContainer';
-
-const fetchCurrencies = () => {
-  return axios.get('https://api.frankfurter.app/currencies');
-};
 
 const Home = () => {
-  const { data } = useQuery('currencies', fetchCurrencies, {
-    select: (data) => {
-      const newData = Object.entries(data.data).map((currency) => ({
-        key: currency[0],
-        value: currency[0],
-        currencyName: currency[1],
-      }));
-
-      return { ...data, data: newData };
-    },
-  });
-
   const initialValues = {
     fromCurrency: '',
+    toCurrency: '',
   };
 
   const validationSchema = Yup.object({
@@ -41,10 +25,20 @@ const Home = () => {
       }}
       validationSchema={validationSchema}
     >
-      <Form>
-        <FormContainer name='fromCurrency' options={data?.data} />
+      <FormikForm>
+        <Stack height='40vh' gap='30px'>
+          <Stack gap='30px'>
+            <FormSelect name='fromCurrency' />
+            <FormSelect name='toCurrency' />
+          </Stack>
+
+          <Center fontSize='sm' color='brand.textDarkGray'>
+            Ultíma conversión 04/05/2021
+          </Center>
+        </Stack>
+
         <ControlsContainer />
-      </Form>
+      </FormikForm>
     </Formik>
   );
 };

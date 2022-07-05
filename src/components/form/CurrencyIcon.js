@@ -11,26 +11,24 @@ const CurrencyIcon = ({ currency }) => {
     <Flex
       width='41px'
       height='41px'
-      bgColor='brand.textGray'
-      borderRadius='full'
       justifyContent='center'
+      bgColor='brand.background'
+      borderRadius='full'
       userSelect='none'
     >
-      <Center fontSize='2xl' color='brand.primary'>
+      <Center color='brand.primary'>
         {!currency ? (
           <Icon fontSize='3xl' as={RiCoinsLine} />
         ) : (
-          <>
-            {prettyCurrency.length > 1 ? (
-              prettyCurrency.length > 2 ? (
-                <Text fontSize='md'>{prettyCurrency}</Text>
-              ) : (
-                <Text fontSize='2xl'>{prettyCurrency}</Text>
-              )
-            ) : (
-              <Text fontSize='3xl'>{prettyCurrency}</Text>
-            )}
-          </>
+          <Text
+            fontSize={
+              (prettyCurrency.length === 1 && '3xl') ||
+              (prettyCurrency.length === 2 && '2xl') ||
+              'md'
+            }
+          >
+            {prettyCurrency}
+          </Text>
         )}
       </Center>
     </Flex>
