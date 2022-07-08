@@ -8,6 +8,7 @@ const Button = ({ children, handleClick = () => console.log('hola') }) => {
       whileTap={{
         scale: 0.85,
       }}
+      onClick={handleClick}
     >
       <Flex
         width='60px'
@@ -17,7 +18,6 @@ const Button = ({ children, handleClick = () => console.log('hola') }) => {
         justifyContent='center'
         cursor='pointer'
         userSelect='none'
-        onClick={() => handleClick()}
       >
         <Center>{children}</Center>
       </Flex>
