@@ -15,7 +15,7 @@ const FormSelect = ({ name }) => {
       height='66px'
       padding='17px'
       paddingBottom='8px'
-      margin='0 auto'
+      margin='auto'
       direction='row'
       alignItems='center'
     >
@@ -26,7 +26,6 @@ const FormSelect = ({ name }) => {
 
         <Field name={name}>
           {({ field, form, meta }) => {
-            console.log(field);
             return (
               <Select placeholder='-' {...field}>
                 {options?.data.map(option => (
