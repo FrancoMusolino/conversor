@@ -1,5 +1,11 @@
 import React from 'react';
-import { FormLabel, Stack, Select } from '@chakra-ui/react';
+import {
+  FormLabel,
+  Stack,
+  Select,
+  FormControl,
+  FormErrorMessage,
+} from '@chakra-ui/react';
 import CurrencyIcon from './CurrencyIcon';
 import { Field, useFormikContext } from 'formik';
 import { useCurrenciesData } from '../../hooks/useCurrenciesData';
@@ -26,23 +32,27 @@ const FormSelect = ({ name }) => {
 
         <Field name={name}>
           {({ field, form, meta }) => {
+            console.log(form);
             return (
-              <Select placeholder='-' {...field}>
-                {options?.data.map(option => (
-                  <option key={option.key} value={option.value}>
-                    {field.value === option.value
-                      ? option.value
-                      : option.currencyName}
-                  </option>
-                ))}
-              </Select>
+              <FormControl isInvalid={form.errors[name] && form.touched[name]}>
+                <Select placeholder='-' {...field}>
+                  {options?.data.map(option => (
+                    <option key={option.key} value={option.value}>
+                      {field.value === option.value
+                        ? option.value
+                        : option.currencyName}
+                    </option>
+                  ))}
+                </Select>
+                <FormErrorMessage>{form.errors[name]}</FormErrorMessage>
+              </FormControl>
             );
           }}
         </Field>
       </Stack>
 
       <Stack width='55%'>
-        <FormInput />
+        <FormInput name={name} />
       </Stack>
     </Stack>
   );

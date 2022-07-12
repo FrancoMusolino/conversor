@@ -1,16 +1,21 @@
 import React from 'react';
+import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import { Formik, Form as FormikForm } from 'formik';
 import { Stack, Center, Flex } from '@chakra-ui/react';
+import * as formActions from '../redux/form/form-actions';
 
 import FormSelect from '../components/form/FormSelect';
 import ControlsContainer from '../components/controls/ControlsContainer';
 
 const Home = () => {
+  const inputValue = useSelector(state => state.form.inputValue);
+  const dispatch = useDispatch();
+
   const initialValues = {
     fromCurrency: '',
     toCurrency: '',
-    cuantity: 0,
   };
 
   const validationSchema = Yup.object({
@@ -21,9 +26,14 @@ const Home = () => {
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={(values, actions) => {
-        console.log(values);
-        console.log(actions);
+      onSubmit={async (values, actions) => {
+        const { data } = await axios.get(
+          `https://api.frankfurter.app/latest?amount=${parseInt(
+            inputValue
+          )}&from=${values.fromCurrency}&to=${values.toCurrency}`
+        );
+        console.log(data);
+        dispatch(formActions.doConversion(data.rates));
       }}
       validationSchema={validationSchema}
     >
