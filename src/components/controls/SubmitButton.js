@@ -3,11 +3,22 @@ import { Icon } from '@chakra-ui/icons';
 import { Button as ChakraButton } from '@chakra-ui/react';
 
 import Button from './Button';
+import { useFormikContext } from 'formik';
 
 const SubmitButton = ({ value }) => {
+  const { isSubmitting } = useFormikContext();
+
   return (
     <Button>
-      <ChakraButton variant='unstyled' type='submit'>
+      <ChakraButton
+        display='flex'
+        justifyContent='center'
+        fontSize='xl'
+        color='status.success'
+        variant='unstyled'
+        type='submit'
+        isLoading={isSubmitting}
+      >
         <Icon fontSize='3xl' color='status.success' as={value} />
       </ChakraButton>
     </Button>
