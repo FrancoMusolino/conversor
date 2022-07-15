@@ -2,7 +2,7 @@ import React from 'react';
 import { Center, Flex } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 
-const Button = ({ children, handleClick = () => console.log('hola') }) => {
+const Button = ({ children, handleClick }) => {
   return (
     <motion.div
       whileTap={{
