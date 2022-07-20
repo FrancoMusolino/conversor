@@ -1,7 +1,9 @@
 import {
   ADD_NUMBER,
+  CLEAR_ERROR,
   DELETE_ALL,
   DELETE_NUMBER,
+  ERROR,
   INVERT_VALUES,
   SUCCESS,
 } from './form-types';
@@ -9,6 +11,7 @@ import {
 const INITIAL_STATE = {
   inputValue: '0',
   result: 0,
+  error: false,
 };
 
 const formReducer = (state = INITIAL_STATE, action) => {
@@ -47,6 +50,18 @@ const formReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         result: action.payload,
+      };
+
+    case ERROR:
+      return {
+        ...state,
+        error: action.payload,
+      };
+
+    case CLEAR_ERROR:
+      return {
+        ...state,
+        error: false,
       };
 
     default:

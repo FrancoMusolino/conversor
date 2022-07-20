@@ -10,31 +10,34 @@ import { Stack, Flex } from '@chakra-ui/react';
 import ControlsContainer from '../components/controls/ControlsContainer';
 import FormContainer from '../components/form/FormContainer';
 import LastConversion from '../components/LastConversion/LastConversion';
+import ErrorModal from '../components/ErrorModal/ErrorModal';
 
 const Home = () => {
   const dispatch = useDispatch();
 
   return (
-    <Formik
-      initialValues={initialValues}
-      validationSchema={validationSchema}
-      onSubmit={(values, actions) => {
-        dispatch(formActions.doConversion(values, actions));
-        dispatch(historyActions.newLastConversion());
-      }}
-    >
-      <FormikForm>
-        <Stack height='40vh' gap='30px'>
-          <Flex direction='column' gap='30px'>
-            <FormContainer name='fromCurrency' />
-            <FormContainer name='toCurrency' />
-          </Flex>
-          <LastConversion />
-        </Stack>
+    <>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={(values, actions) => {
+          dispatch(formActions.doConversion(values, actions));
+        }}
+      >
+        <FormikForm>
+          <Stack height='40vh' gap='30px'>
+            <Flex direction='column' gap='30px'>
+              <FormContainer name='fromCurrency' />
+              <FormContainer name='toCurrency' />
+            </Flex>
+            <LastConversion />
+          </Stack>
 
-        <ControlsContainer />
-      </FormikForm>
-    </Formik>
+          <ControlsContainer />
+        </FormikForm>
+      </Formik>
+      <ErrorModal />
+    </>
   );
 };
 
