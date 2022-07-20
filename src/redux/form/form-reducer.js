@@ -2,8 +2,8 @@ import {
   ADD_NUMBER,
   DELETE_ALL,
   DELETE_NUMBER,
-  DO_CONVERSION,
   INVERT_VALUES,
+  SUCCESS,
 } from './form-types';
 
 const INITIAL_STATE = {
@@ -43,10 +43,10 @@ const formReducer = (state = INITIAL_STATE, action) => {
         result: 0,
       };
 
-    case DO_CONVERSION:
+    case SUCCESS:
       return {
         ...state,
-        result: Object.values(action.payload)[0],
+        result: action.payload,
       };
 
     default:

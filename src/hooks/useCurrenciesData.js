@@ -7,8 +7,8 @@ const fetchCurrencies = () => {
 
 export const useCurrenciesData = () => {
   return useQuery('currencies', fetchCurrencies, {
-    select: (data) => {
-      const newData = Object.entries(data.data).map((currency) => ({
+    select: data => {
+      const newData = Object.entries(data.data).map(currency => ({
         key: currency[0],
         value: currency[0],
         currencyName: currency[1],
@@ -16,5 +16,6 @@ export const useCurrenciesData = () => {
 
       return { ...data, data: newData };
     },
+    staleTime: Infinity,
   });
 };

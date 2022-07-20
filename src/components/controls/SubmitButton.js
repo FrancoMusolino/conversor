@@ -1,9 +1,9 @@
 import React from 'react';
+import { useFormikContext } from 'formik';
 import { Icon } from '@chakra-ui/icons';
 import { Button as ChakraButton } from '@chakra-ui/react';
 
 import Button from './Button';
-import { useFormikContext } from 'formik';
 
 const SubmitButton = ({ value }) => {
   const { isSubmitting } = useFormikContext();
