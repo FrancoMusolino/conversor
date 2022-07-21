@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import * as formActions from '../redux/form/form-actions';
-import * as historyActions from '../redux/history/history-actions';
 import { Formik, Form as FormikForm } from 'formik';
 import { initialValues, validationSchema } from '../formik/index';
 
@@ -20,9 +19,9 @@ const Home = () => {
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={(values, actions) => {
-          dispatch(formActions.doConversion(values, actions));
-        }}
+        onSubmit={(values, actions) =>
+          dispatch(formActions.doConversion(values, actions))
+        }
       >
         <FormikForm>
           <Stack height='40vh' gap='30px'>

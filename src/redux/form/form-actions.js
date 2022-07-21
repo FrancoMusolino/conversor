@@ -32,7 +32,14 @@ export const doConversion = (formValues, formActions) => async dispatch => {
         formValues.fromCurrency
       }&to=${formValues.toCurrency}`
     );
+
     dispatch({ type: SUCCESS, payload: data.rates[formValues.toCurrency] });
+    dispatch(
+      historyActions.addConversionToHistory({
+        ...data,
+        date: new Date(),
+      })
+    );
     dispatch(historyActions.newLastConversion());
   } catch (error) {
     dispatch({ type: ERROR, payload: error });
