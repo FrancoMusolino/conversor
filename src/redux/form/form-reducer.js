@@ -7,6 +7,7 @@ import {
   INVERT_VALUES,
   SUCCESS,
 } from './form-types';
+import { addNumber } from './form-utils';
 
 const INITIAL_STATE = {
   inputValue: '0',
@@ -19,10 +20,7 @@ const formReducer = (state = INITIAL_STATE, action) => {
     case ADD_NUMBER:
       return {
         ...state,
-        inputValue:
-          state.inputValue === '0'
-            ? String(action.payload)
-            : state.inputValue + String(action.payload),
+        inputValue: addNumber(state.inputValue, action.payload),
       };
 
     case DELETE_NUMBER:

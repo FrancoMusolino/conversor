@@ -28,7 +28,7 @@ export const doConversion = (formValues, formActions) => async dispatch => {
 
   try {
     const { data } = await axios.get(
-      `https://api.frankfurter.app/latest?amount=${parseInt(inputValue)}&from=${
+      `https://api.frankfurter.app/latest?amount=${Number(inputValue)}&from=${
         formValues.fromCurrency
       }&to=${formValues.toCurrency}`
     );

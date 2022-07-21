@@ -24,7 +24,12 @@ const ErrorModal = () => {
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>Upss... Ocurrió un error 😢</ModalHeader>
-        <ModalCloseButton />
+        <ModalCloseButton
+          onClick={() => {
+            dispatch(formActions.clearError());
+            onClose();
+          }}
+        />
         <ModalBody>{error.message}</ModalBody>
 
         <ModalFooter>
