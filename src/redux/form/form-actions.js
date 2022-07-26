@@ -1,9 +1,7 @@
 import {
   ADD_NUMBER,
-  CLEAR_ERROR,
   DELETE_ALL,
   DELETE_NUMBER,
-  ERROR,
   INVERT_VALUES,
   SUCCESS,
 } from './form-types';
@@ -19,9 +17,7 @@ export const deleteAll = () => ({ type: DELETE_ALL });
 
 export const invertValues = () => ({ type: INVERT_VALUES });
 
-export const clearError = () => ({ type: CLEAR_ERROR });
-
-export const doConversion = (formValues, formActions) => async dispatch => {
+export const doConversion = formValues => async dispatch => {
   const {
     form: { inputValue },
   } = store.getState();
@@ -42,8 +38,6 @@ export const doConversion = (formValues, formActions) => async dispatch => {
     );
     dispatch(historyActions.newLastConversion());
   } catch (error) {
-    dispatch({ type: ERROR, payload: error });
+    throw new Error('Upss.. Algo salió mal');
   }
-
-  formActions.setSubmitting(false);
 };
