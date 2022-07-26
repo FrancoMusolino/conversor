@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
+import DeleteHistory from '../components/DeleteHistory/DeleteHistory';
 import EmptyHistory from '../components/EmptyHistory/EmptyHistory';
 
 const History = () => {
@@ -20,6 +21,8 @@ const History = () => {
       ) : (
         <EmptyHistory />
       )}
+
+      <DeleteHistory />
     </div>
   );
 };

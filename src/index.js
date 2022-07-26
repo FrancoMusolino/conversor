@@ -9,7 +9,6 @@ import { BrowserRouter } from 'react-router-dom';
 import { ChakraProvider } from '@chakra-ui/react';
 import { theme } from './styles/theme';
 import { QueryClientProvider, QueryClient } from 'react-query';
-import { ReactQueryDevtools } from 'react-query/devtools';
 
 const queryClient = new QueryClient();
 
@@ -23,7 +22,6 @@ root.render(
             <App />
           </ChakraProvider>
         </BrowserRouter>
-        <ReactQueryDevtools />
       </QueryClientProvider>
     </PersistGate>
   </Provider>
