@@ -4,6 +4,7 @@ import {
   DELETE_NUMBER,
   INVERT_VALUES,
   SUCCESS,
+  RESET_VALUES,
 } from './form-types';
 import { addNumber } from './form-utils';
 
@@ -46,6 +47,9 @@ const formReducer = (state = INITIAL_STATE, action) => {
         ...state,
         result: action.payload,
       };
+
+    case RESET_VALUES:
+      return INITIAL_STATE;
 
     default:
       return state;

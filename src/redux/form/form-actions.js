@@ -3,6 +3,7 @@ import {
   DELETE_ALL,
   DELETE_NUMBER,
   INVERT_VALUES,
+  RESET_VALUES,
   SUCCESS,
 } from './form-types';
 import * as historyActions from '../history/history-actions';
@@ -16,6 +17,8 @@ export const deleteNumber = () => ({ type: DELETE_NUMBER });
 export const deleteAll = () => ({ type: DELETE_ALL });
 
 export const invertValues = () => ({ type: INVERT_VALUES });
+
+export const resetValues = () => ({ type: RESET_VALUES });
 
 export const doConversion = formValues => async dispatch => {
   const {
