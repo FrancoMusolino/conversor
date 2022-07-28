@@ -41,6 +41,7 @@ const ModalConfirmation = ({ open, onClose }) => {
               borderRadius={15}
               color='white'
               fontSize='sm'
+              _hover={{ background: 'brand.primary' }}
             >
               CANCELAR
             </Button>
@@ -54,6 +55,7 @@ const ModalConfirmation = ({ open, onClose }) => {
               borderRadius={15}
               color='white'
               fontSize='sm'
+              _hover={{ background: 'status.success' }}
             >
               ACEPTAR
             </Button>
