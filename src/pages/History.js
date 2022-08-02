@@ -1,29 +1,33 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Stack, Text } from '@chakra-ui/react';
 
 import DeleteHistory from '../components/DeleteHistory/DeleteHistory';
 import EmptyHistory from '../components/EmptyHistory/EmptyHistory';
+import CardHistory from '../components/CardHistory/CardHistory';
 
 const History = () => {
   const { historyOfConversions } = useSelector(state => state.history);
 
   return (
-    <div>
+    <Stack justifyContent='flex-start' alignItems='flex-start'>
       {Object.keys(historyOfConversions).length ? (
         Object.entries(historyOfConversions).map(([date, conversions]) => (
-          <>
-            <h1>{date}</h1>
+          <Stack width='full' height='78vh' gap={3} overflow='scroll'>
+            <Text color='brand.textWhite' lineHeight='18px'>
+              {date}
+            </Text>
             {conversions.map(conversion => (
-              <h2>{conversion.amount}</h2>
+              <CardHistory key={conversion.date} {...conversion} />
             ))}
-          </>
+          </Stack>
         ))
       ) : (
         <EmptyHistory />
       )}
 
       <DeleteHistory />
-    </div>
+    </Stack>
   );
 };
 

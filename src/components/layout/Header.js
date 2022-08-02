@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <Stack
       as='header'
-      height='80px'
+      minHeight='80px'
       width='255px'
       direction='row'
       justifyContent='space-between'

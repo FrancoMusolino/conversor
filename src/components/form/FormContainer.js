@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormLabel, Stack } from '@chakra-ui/react';
-import CurrencyIcon from './CurrencyIcon';
+import CurrencyFormIcon from './CurrencyFormIcon';
 
 import FormInput from './FormInput';
 import FormSelect from './FormSelect';
@@ -18,7 +18,7 @@ const FormContainer = ({ name }) => {
     >
       <Stack direction='row' alignItems='center' gap={1} width='45%'>
         <FormLabel margin={0}>
-          <CurrencyIcon name={name} />
+          <CurrencyFormIcon name={name} />
         </FormLabel>
 
         <FormSelect name={name} />

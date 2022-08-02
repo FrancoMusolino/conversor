@@ -6,7 +6,7 @@ import IconContainer from '../IconContainer/IconContainer';
 
 const EmptyHistory = () => {
   return (
-    <Stack gap={3}>
+    <Stack margin='auto' gap={3}>
       <IconContainer args={{ width: '150px', height: '150px' }}>
         <FaHistory fontSize='68px' />
       </IconContainer>

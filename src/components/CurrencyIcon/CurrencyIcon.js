@@ -1,14 +1,12 @@
 import React from 'react';
 import { formatCurrency } from '../../utils';
-import { useFormikContext } from 'formik';
 
 import { Center, Flex, Icon, Text } from '@chakra-ui/react';
 import { RiCoinsLine } from 'react-icons/ri';
 
-const CurrencyIcon = ({ name }) => {
-  const { values } = useFormikContext();
-
-  const prettyCurrency = values[name] && formatCurrency(values[name]);
+const CurrencyIcon = ({ value }) => {
+  console.log(value);
+  const prettyCurrency = value && formatCurrency(value);
 
   return (
     <Flex
@@ -20,7 +18,7 @@ const CurrencyIcon = ({ name }) => {
       userSelect='none'
     >
       <Center color='brand.primary'>
-        {!values[name] ? (
+        {!value ? (
           <Icon fontSize='3xl' as={RiCoinsLine} />
         ) : (
           <Text

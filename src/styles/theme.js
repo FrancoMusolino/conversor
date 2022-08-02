@@ -25,6 +25,9 @@ const styles = {
     a: {
       textDecoration: 'none',
     },
+    p: {
+      marginTop: '0 !important',
+    },
   },
 };
 
