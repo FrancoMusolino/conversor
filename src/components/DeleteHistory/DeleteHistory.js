@@ -18,8 +18,6 @@ const DeleteHistory = () => {
   return (
     <>
       <Box
-        maxW='500px'
-        margin='auto'
         position='fixed'
         bottom={0}
         left={0}
@@ -46,7 +44,9 @@ const DeleteHistory = () => {
             onClick={onOpen}
             whileTap={{ scale: 0.85 }}
           >
-            <IconContainer args={{ width: '50px', height: '50px' }}>
+            <IconContainer
+              args={{ width: '50px', height: '50px', color: 'brand.primary' }}
+            >
               <FaTrash fontSize='18px' />
             </IconContainer>
           </motion.button>

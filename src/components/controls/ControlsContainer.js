@@ -6,12 +6,12 @@ import { controls } from '../../data';
 const ControlsContainer = () => {
   return (
     <Grid
-      width='375px'
+      maxW='375px'
       templateColumns='repeat(4, 60px)'
       justifyContent='center'
       gap={4}
     >
-      {controls?.map((control) => (
+      {controls?.map(control => (
         <GridItem justifySelf='center' key={control.value}>
           <SingleControl type={control.type} {...control} />
         </GridItem>

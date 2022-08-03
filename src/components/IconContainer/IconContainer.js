@@ -8,7 +8,6 @@ const IconContainer = ({ children, args }) => {
       alignItems='center'
       borderRadius='full'
       boxShadow='dark-lg'
-      color='brand.primary'
       {...args}
     >
       {children}

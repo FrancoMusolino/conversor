@@ -10,7 +10,12 @@ const CardHistory = ({ amount, base, rates }) => {
   const final = Object.keys(rates)[0];
 
   return (
-    <HStack padding={1} marginTop={0} justifyContent='space-between'>
+    <HStack
+      width='325px'
+      padding={1}
+      marginTop={0}
+      justifyContent='space-between'
+    >
       <HStack gap={1}>
         <IconContainer args={{ width: '51px', height: '51px' }}>
           <CurrencyIcon value={base} />
@@ -20,7 +25,11 @@ const CardHistory = ({ amount, base, rates }) => {
           <Text fontSize='sm'>{base}</Text>
         </Stack>
       </HStack>
-      {amount >= rates[final] ? <ArrowTrendDown /> : <ArrowTrendUp />}
+      {amount >= rates[final] ? (
+        <ArrowTrendDown color='red' />
+      ) : (
+        <ArrowTrendUp color='blue' />
+      )}
       <HStack gap={1}>
         <Stack alignItems='flex-end'>
           <Text>{rates[final]}</Text>

@@ -10,11 +10,11 @@ const History = () => {
   const { historyOfConversions } = useSelector(state => state.history);
 
   return (
-    <Stack justifyContent='flex-start' alignItems='flex-start'>
+    <>
       {Object.keys(historyOfConversions).length ? (
         Object.entries(historyOfConversions).map(([date, conversions]) => (
-          <Stack width='full' height='78vh' gap={3} overflow='scroll'>
-            <Text color='brand.textWhite' lineHeight='18px'>
+          <Stack height='78vh' gap={3}>
+            <Text marginLeft='0.3rem' color='brand.textWhite' lineHeight='18px'>
               {date}
             </Text>
             {conversions.map(conversion => (
@@ -27,7 +27,7 @@ const History = () => {
       )}
 
       <DeleteHistory />
-    </Stack>
+    </>
   );
 };
 
