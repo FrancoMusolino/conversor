@@ -25,7 +25,9 @@ const DeleteHistory = () => {
         zIndex={1000}
         padding={2}
         paddingInline={4}
-        backgroundColor='brand.textGray'
+        background='linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), #1A1A1A'
+        borderTop='1px'
+        borderColor='brand.textGray'
         borderRadius={5}
       >
         <Flex
