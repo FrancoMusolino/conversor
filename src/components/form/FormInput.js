@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 const FormInput = ({ name }) => {
   const value = useSelector(
-    state => state.form[name === 'fromCurrency' ? 'inputValue' : 'result']
+    (state) => state.form[name === 'fromCurrency' ? 'inputValue' : 'result']
   );
 
   return (

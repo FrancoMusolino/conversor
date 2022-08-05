@@ -14,7 +14,17 @@ const History = () => {
   let baseDelay = 0.2;
 
   return (
-    <Stack height='78vh' gap={5} alignItems='center'>
+    <Stack
+      height='78vh'
+      gap={5}
+      alignItems='center'
+      overflowY='scroll'
+      css={{
+        '&::-webkit-scrollbar': {
+          display: 'none',
+        },
+      }}
+    >
       {Object.keys(historyOfConversions).length ? (
         Object.entries(historyOfConversions).map(
           ([date, conversions], fatherIndex, arr) => {
@@ -23,7 +33,7 @@ const History = () => {
             }
 
             return (
-              <Stack gap={3}>
+              <Stack key={date} gap={3}>
                 <Text
                   as={motion.p}
                   custom={{ delay: baseDelay }}
@@ -38,7 +48,7 @@ const History = () => {
                 </Text>
                 {conversions.map((conversion, index) => (
                   <CardHistory
-                    key={conversion.date}
+                    key={conversion.id}
                     delay={baseDelay + 0.2 * (index + 1)}
                     {...conversion}
                   />

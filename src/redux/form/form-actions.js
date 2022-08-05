@@ -10,7 +10,7 @@ import * as historyActions from '../history/history-actions';
 import { store } from '../store';
 import axios from 'axios';
 
-export const addNumber = value => ({ type: ADD_NUMBER, payload: value });
+export const addNumber = (value) => ({ type: ADD_NUMBER, payload: value });
 
 export const deleteNumber = () => ({ type: DELETE_NUMBER });
 
@@ -20,7 +20,7 @@ export const invertValues = () => ({ type: INVERT_VALUES });
 
 export const resetValues = () => ({ type: RESET_VALUES });
 
-export const doConversion = formValues => async dispatch => {
+export const doConversion = (formValues) => async (dispatch) => {
   const {
     form: { inputValue },
   } = store.getState();
@@ -37,6 +37,7 @@ export const doConversion = formValues => async dispatch => {
       historyActions.addConversionToHistory({
         ...data,
         date: new Date(),
+        id: Math.floor(Math.random() * 100000),
       })
     );
     dispatch(historyActions.newLastConversion());

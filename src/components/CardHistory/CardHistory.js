@@ -1,8 +1,7 @@
 import React from 'react';
 import { HStack, Stack, Text } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
-import { opacityVariants } from '../../utils'
-
+import { opacityVariants } from '../../utils';
 
 import arrowTrendDown from '../../assets/arrowTrendDown.png';
 import arrowTrendUp from '../../assets/arrowTrendUp.png';
@@ -10,9 +9,9 @@ import arrowTrendUp from '../../assets/arrowTrendUp.png';
 import CurrencyIcon from '../CurrencyIcon/CurrencyIcon';
 import IconContainer from '../IconContainer/IconContainer';
 
-const CardHistory = ({ amount, base, rates, delay}) => {
+const CardHistory = ({ amount, base, rates, delay }) => {
   const final = Object.keys(rates)[0];
-  
+
   return (
     <HStack
       as={motion.div}
@@ -30,7 +29,18 @@ const CardHistory = ({ amount, base, rates, delay}) => {
           <CurrencyIcon value={base} />
         </IconContainer>
         <Stack>
-          <Text>{amount}</Text>
+          <Text
+            width='60px'
+            whiteSpace='nowrap'
+            overflowX='scroll'
+            css={{
+              '&::-webkit-scrollbar': {
+                display: 'none',
+              },
+            }}
+          >
+            {amount}
+          </Text>
           <Text fontSize='sm'>{base}</Text>
         </Stack>
       </HStack>
@@ -41,7 +51,19 @@ const CardHistory = ({ amount, base, rates, delay}) => {
       )}
       <HStack gap={1}>
         <Stack alignItems='flex-end'>
-          <Text>{rates[final]}</Text>
+          <Text
+            width='60px'
+            textAlign='right'
+            whiteSpace='nowrap'
+            overflowX='scroll'
+            css={{
+              '&::-webkit-scrollbar': {
+                display: 'none',
+              },
+            }}
+          >
+            {rates[final]}
+          </Text>
           <Text fontSize='sm'>{final}</Text>
         </Stack>
         <IconContainer args={{ width: '51px', height: '51px' }}>
