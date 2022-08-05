@@ -1,6 +1,8 @@
 import React from 'react';
 import { HStack, Stack, Text } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
+import { opacityVariants } from '../../utils'
+
 
 import arrowTrendDown from '../../assets/arrowTrendDown.png';
 import arrowTrendUp from '../../assets/arrowTrendUp.png';
@@ -8,29 +10,16 @@ import arrowTrendUp from '../../assets/arrowTrendUp.png';
 import CurrencyIcon from '../CurrencyIcon/CurrencyIcon';
 import IconContainer from '../IconContainer/IconContainer';
 
-const CardHistory = ({ amount, base, rates, index, fatherIndex }) => {
+const CardHistory = ({ amount, base, rates, delay}) => {
   const final = Object.keys(rates)[0];
-
-  const variants = {
-    hidden: {
-      opacity: 0,
-    },
-    visible: ({ delay }) => ({
-      opacity: 1,
-      transition: {
-        delay,
-        duration: 0.75,
-      },
-    }),
-  };
-
+  
   return (
     <HStack
       as={motion.div}
-      custom={{ delay: fatherIndex + index * 0.2 }}
+      custom={{ delay }}
       initial='hidden'
       animate='visible'
-      variants={variants}
+      variants={opacityVariants}
       width='325px'
       padding={1}
       marginTop={0}
