@@ -5,7 +5,6 @@ import { Center, Flex, Icon, Text } from '@chakra-ui/react';
 import { RiCoinsLine } from 'react-icons/ri';
 
 const CurrencyIcon = ({ value }) => {
-  console.log(value);
   const prettyCurrency = value && formatCurrency(value);
 
   return (

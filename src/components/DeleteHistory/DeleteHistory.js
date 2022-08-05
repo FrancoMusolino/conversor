@@ -20,9 +20,8 @@ const DeleteHistory = () => {
       <Box
         position='fixed'
         bottom={0}
-        left={0}
-        right={0}
-        zIndex={1000}
+        width='100%'
+        maxW='420px'
         padding={2}
         paddingInline={4}
         background='linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), #1A1A1A'

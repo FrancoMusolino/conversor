@@ -7,7 +7,7 @@ const IconContainer = ({ children, args }) => {
       justifyContent='center'
       alignItems='center'
       borderRadius='full'
-      boxShadow='dark-lg'
+      boxShadow='md'
       {...args}
     >
       {children}

@@ -1,16 +1,36 @@
 import React from 'react';
 import { HStack, Stack, Text } from '@chakra-ui/react';
-import CurrencyIcon from '../CurrencyIcon/CurrencyIcon';
+import { motion } from 'framer-motion';
 
-import ArrowTrendUp from '../svgs/ArrowTrendUp';
-import ArrowTrendDown from '../svgs/ArrowTrendDown';
+import arrowTrendDown from '../../assets/arrowTrendDown.png';
+import arrowTrendUp from '../../assets/arrowTrendUp.png';
+
+import CurrencyIcon from '../CurrencyIcon/CurrencyIcon';
 import IconContainer from '../IconContainer/IconContainer';
 
-const CardHistory = ({ amount, base, rates }) => {
+const CardHistory = ({ amount, base, rates, index, fatherIndex }) => {
   const final = Object.keys(rates)[0];
+
+  const variants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: ({ delay }) => ({
+      opacity: 1,
+      transition: {
+        delay,
+        duration: 0.75,
+      },
+    }),
+  };
 
   return (
     <HStack
+      as={motion.div}
+      custom={{ delay: fatherIndex + index * 0.2 }}
+      initial='hidden'
+      animate='visible'
+      variants={variants}
       width='325px'
       padding={1}
       marginTop={0}
@@ -26,9 +46,9 @@ const CardHistory = ({ amount, base, rates }) => {
         </Stack>
       </HStack>
       {amount >= rates[final] ? (
-        <ArrowTrendDown color='red' />
+        <img src={arrowTrendDown} alt='Arrow Down' />
       ) : (
-        <ArrowTrendUp color='blue' />
+        <img src={arrowTrendUp} alt='Arrow Up' />
       )}
       <HStack gap={1}>
         <Stack alignItems='flex-end'>
