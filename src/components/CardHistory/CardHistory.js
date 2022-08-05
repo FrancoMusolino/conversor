@@ -1,13 +1,12 @@
 import React from 'react';
-import { HStack, Stack, Text } from '@chakra-ui/react';
+import { HStack } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { opacityVariants } from '../../utils';
 
 import arrowTrendDown from '../../assets/arrowTrendDown.png';
 import arrowTrendUp from '../../assets/arrowTrendUp.png';
 
-import CurrencyIcon from '../CurrencyIcon/CurrencyIcon';
-import IconContainer from '../IconContainer/IconContainer';
+import CardDescription from './CardDescription';
 
 const CardHistory = ({ amount, base, rates, delay }) => {
   const final = Object.keys(rates)[0];
@@ -19,57 +18,26 @@ const CardHistory = ({ amount, base, rates, delay }) => {
       initial='hidden'
       animate='visible'
       variants={opacityVariants}
-      width='325px'
+      width='350px'
       padding={1}
       marginTop={0}
       justifyContent='space-between'
     >
-      <HStack gap={1}>
-        <IconContainer args={{ width: '51px', height: '51px' }}>
-          <CurrencyIcon value={base} />
-        </IconContainer>
-        <Stack>
-          <Text
-            width='60px'
-            whiteSpace='nowrap'
-            overflowX='scroll'
-            css={{
-              '&::-webkit-scrollbar': {
-                display: 'none',
-              },
-            }}
-          >
-            {amount}
-          </Text>
-          <Text fontSize='sm'>{base}</Text>
-        </Stack>
-      </HStack>
+      <CardDescription icon={base} amount={amount} />
       {amount >= rates[final] ? (
         <img src={arrowTrendDown} alt='Arrow Down' />
       ) : (
         <img src={arrowTrendUp} alt='Arrow Up' />
       )}
-      <HStack gap={1}>
-        <Stack alignItems='flex-end'>
-          <Text
-            width='60px'
-            textAlign='right'
-            whiteSpace='nowrap'
-            overflowX='scroll'
-            css={{
-              '&::-webkit-scrollbar': {
-                display: 'none',
-              },
-            }}
-          >
-            {rates[final]}
-          </Text>
-          <Text fontSize='sm'>{final}</Text>
-        </Stack>
-        <IconContainer args={{ width: '51px', height: '51px' }}>
-          <CurrencyIcon value={final} />
-        </IconContainer>
-      </HStack>
+      <CardDescription
+        icon={final}
+        amount={rates[final]}
+        styles={{
+          direction: 'row-reverse',
+          textAlign: 'right',
+          alignItems: 'flex-end',
+        }}
+      />
     </HStack>
   );
 };
