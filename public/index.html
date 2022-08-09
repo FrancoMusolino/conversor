@@ -25,8 +25,8 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="apple-mobile-web-app-title" content="Conversor" />
 
-    <link rel="apple-touch-icon" href="/image/icon_192-Dark.png"></link>
-    <link rel="apple-touch-startup-image" href="/image/icon_192-Dark.png"></link>
+    <link rel="apple-touch-icon" href="./Logo.png"></link>
+    <link rel="apple-touch-startup-image" href="./Logo.png"></link>
 
     <!-- Fonts -->
 
@@ -40,5 +40,13 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+
+    <script>
+      window.addEventListener("load", () => {
+        if('serviceWorker' in navigator){
+          navigator.serviceWorker.register('./service-worker.js').then(() => console.log("con exito")).catch((err) => console.log(err))
+        }
+      })
+    </script>
   </body>
 </html>
