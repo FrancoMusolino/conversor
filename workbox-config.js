@@ -1,6 +1,6 @@
 module.exports = {
   globDirectory: 'build/',
-  globPatterns: ['**/*.{js,png}'],
+  globPatterns: ['**/*.{ico,html,png,js}'],
   swDest: 'build/service-worker.js',
-  ignoreURLParametersMatching: [/^utm_/, /^fbclid$/],
+  swSrc: 'public/service-worker.js',
 };
