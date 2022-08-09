@@ -49,7 +49,7 @@ const ModalConfirmation = ({ open, onClose }) => {
                 CANCELAR
               </Button>
             </motion.div>
-            <motion.div whileTap={{ scale: 0.95, color: '#f00' }}>
+            <motion.div whileTap={{ scale: 0.95 }}>
               <Button
                 onClick={() => {
                   dispatch(historyActions.clearConversionHistory());
