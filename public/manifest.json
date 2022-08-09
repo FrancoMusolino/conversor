@@ -1,6 +1,7 @@
 {
-  "short_name": "Conversor",
   "name": "Conversor de monedas",
+  "short_name": "Conversor",
+  "description": "Conversor de Monedas PWA hecho con React y Redux",
   "icons": [
     {
       "src": "favicon.ico",
@@ -18,8 +19,9 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "orientation": "portrait",
+  "theme_color": "#F63356",
+  "background_color": "#1A1A1A"
 }
