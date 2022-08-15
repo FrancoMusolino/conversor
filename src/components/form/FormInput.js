@@ -14,7 +14,6 @@ const FormInput = ({ name }) => {
       <motion.div>
         <Input overflow='scroll' readOnly value={value} />
       </motion.div>
-      <FormErrorMessage>Hola</FormErrorMessage>
     </FormControl>
   );
 };

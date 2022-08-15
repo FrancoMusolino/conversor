@@ -14,35 +14,35 @@ const Home = () => {
   const dispatch = useDispatch();
   const chakraToast = useToast();
 
-  const toast = config =>
+  const toast = (config) =>
     chakraToast({
       duration: 1200,
       isClosable: true,
       ...config,
     });
 
-  const handleSubmit = async (values, actions) => {
-    try {
-      await dispatch(formActions.doConversion(values));
-      toast({
-        title: 'Conversión Exitosa',
-        status: 'success',
-      });
-    } catch (err) {
-      toast({
-        title: err.message,
-        status: 'error',
-      });
-    }
+  // const handleSubmit = async (values, actions) => {
+  //   try {
+  //     await dispatch(formActions.doConversion(values));
+  //     toast({
+  //       title: 'Conversión Exitosa',
+  //       status: 'success',
+  //     });
+  //   } catch (err) {
+  //     toast({
+  //       title: err.message,
+  //       status: 'error',
+  //     });
+  //   }
 
-    actions.setSubmitting(false);
-  };
+  //   actions.setSubmitting(false);
+  // };
 
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
-      onSubmit={(values, actions) => handleSubmit(values, actions)}
+      // onSubmit={(values, actions) => handleSubmit(values, actions)}
     >
       <Form>
         <Stack height='80vh' justifyContent='space-around' alignItems='center'>

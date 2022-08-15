@@ -1,5 +1,4 @@
 import { applyMiddleware, createStore } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
 import { persistStore } from 'redux-persist';
 import reduxThunk from 'redux-thunk';
 
@@ -10,8 +9,8 @@ const middlewares = [reduxThunk];
 
 export const store = createStore(
   rootReducer,
-  initialState,
-  composeWithDevTools(applyMiddleware(...middlewares))
+  initialState
+  // composeWithDevTools(applyMiddleware(...middlewares))
 );
 
 export const persistor = persistStore(store);
