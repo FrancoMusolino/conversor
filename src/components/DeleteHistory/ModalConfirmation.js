@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import * as historyActions from '../../redux/history/history-actions';
-import * as formActions from '../../redux/form/form-actions';
+import { clearConversionHistory } from '../../features/history/histoty-slice';
 import { motion } from 'framer-motion';
 
 import {
@@ -52,8 +51,7 @@ const ModalConfirmation = ({ open, onClose }) => {
             <motion.div whileTap={{ scale: 0.95 }}>
               <Button
                 onClick={() => {
-                  dispatch(historyActions.clearConversionHistory());
-                  dispatch(formActions.resetValues());
+                  dispatch(clearConversionHistory());
                   onClose();
                 }}
                 backgroundColor='status.success'

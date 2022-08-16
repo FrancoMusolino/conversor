@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { doConversion } from '../features/form/form-slice';
 import { Formik, Form } from 'formik';
 import { initialValues, validationSchema } from '../formik/index';
-
 import { Stack, Flex, useToast } from '@chakra-ui/react';
 
 import ControlsContainer from '../components/controls/ControlsContainer';
@@ -28,7 +27,6 @@ const Home = () => {
         title: 'Conversión Exitosa',
         status: 'success',
       });
-      dispatch();
     } catch (err) {
       toast({
         title: err.message,

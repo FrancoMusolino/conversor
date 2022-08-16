@@ -23,7 +23,8 @@ const historySlice = createSlice({
     },
 
     clearConversionHistory(state) {
-      state = initialState;
+      state.historyOfConversions = initialState.historyOfConversions;
+      state.lastConversion = initialState.lastConversion;
     },
   },
 });

@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-
-import { FormControl, FormErrorMessage, Input } from '@chakra-ui/react';
+import { FormControl, Input } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 
 const FormInput = ({ name }) => {

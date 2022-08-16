@@ -1,6 +1,7 @@
 import React from 'react';
 import { Center, Flex } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
+
 import IconContainer from '../IconContainer/IconContainer';
 
 const Button = ({ children, handleClick }) => {

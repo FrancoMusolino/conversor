@@ -6,11 +6,11 @@ import IconContainer from '../IconContainer/IconContainer';
 
 const CardDescription = ({ icon, amount, styles }) => {
   return (
-    <HStack gap={1} flexDirection={styles && styles.direction}>
+    <HStack gap={1} flexDirection={styles?.direction}>
       <IconContainer args={{ width: '51px', height: '51px' }}>
         <CurrencyIcon value={icon} />
       </IconContainer>
-      <Stack margin='0 !important' alignItems={styles && styles.alignItems}>
+      <Stack margin='0 !important' alignItems={styles?.alignItems}>
         <Text
           width='70px'
           whiteSpace='nowrap'
@@ -20,7 +20,7 @@ const CardDescription = ({ icon, amount, styles }) => {
               display: 'none',
             },
           }}
-          textAlign={styles && styles.textAlign}
+          textAlign={styles?.textAlign}
         >
           {amount}
         </Text>
