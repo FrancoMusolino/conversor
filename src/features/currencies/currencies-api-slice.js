@@ -21,4 +21,5 @@ export const currenciesApiSlice = createApi({
   },
 });
 
-export const { useFetchCurrenciesQuery } = currenciesApiSlice;
+export const { useFetchCurrenciesQuery, useFetchConversionQuery } =
+  currenciesApiSlice;

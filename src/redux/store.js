@@ -1,11 +1,11 @@
 import { applyMiddleware, createStore } from 'redux';
 import { persistStore } from 'redux-persist';
-import reduxThunk from 'redux-thunk';
+// import reduxThunk from 'redux-thunk';
 
 import rootReducer from './root-reducer';
 
 const initialState = {};
-const middlewares = [reduxThunk];
+// const middlewares = [reduxThunk];
 
 export const store = createStore(
   rootReducer,

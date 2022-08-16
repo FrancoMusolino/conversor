@@ -9,7 +9,7 @@ import EmptyHistory from '../components/EmptyHistory/EmptyHistory';
 import CardHistory from '../components/CardHistory/CardHistory';
 
 const History = () => {
-  // const { historyOfConversions } = useSelector((state) => state.history);
+  const { historyOfConversions } = useSelector((state) => state.history);
 
   let baseDelay = 0.2;
 
@@ -25,7 +25,7 @@ const History = () => {
         },
       }}
     >
-      {/* {Object.keys(historyOfConversions).length ? (
+      {Object.keys(historyOfConversions).length ? (
         Object.entries(historyOfConversions).map(
           ([date, conversions], fatherIndex, arr) => {
             if (arr[fatherIndex - 1]) {
@@ -61,7 +61,7 @@ const History = () => {
         <EmptyHistory />
       )}
 
-      <DeleteHistory /> */}
+      <DeleteHistory />
     </Stack>
   );
 };

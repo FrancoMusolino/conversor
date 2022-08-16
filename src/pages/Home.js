@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import * as formActions from '../redux/form/form-actions';
+import { doConversion } from '../features/form/form-slice';
 import { Formik, Form } from 'formik';
 import { initialValues, validationSchema } from '../formik/index';
 
@@ -21,28 +21,29 @@ const Home = () => {
       ...config,
     });
 
-  // const handleSubmit = async (values, actions) => {
-  //   try {
-  //     await dispatch(formActions.doConversion(values));
-  //     toast({
-  //       title: 'Conversión Exitosa',
-  //       status: 'success',
-  //     });
-  //   } catch (err) {
-  //     toast({
-  //       title: err.message,
-  //       status: 'error',
-  //     });
-  //   }
+  const handleSubmit = async (values, actions) => {
+    try {
+      await dispatch(doConversion(values));
+      toast({
+        title: 'Conversión Exitosa',
+        status: 'success',
+      });
+      dispatch();
+    } catch (err) {
+      toast({
+        title: err.message,
+        status: 'error',
+      });
+    }
 
-  //   actions.setSubmitting(false);
-  // };
+    actions.setSubmitting(false);
+  };
 
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
-      // onSubmit={(values, actions) => handleSubmit(values, actions)}
+      onSubmit={(values, actions) => handleSubmit(values, actions)}
     >
       <Form>
         <Stack height='80vh' justifyContent='space-around' alignItems='center'>

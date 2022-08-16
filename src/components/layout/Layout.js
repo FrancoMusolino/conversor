@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import * as formActions from '../../redux/form/form-actions';
+import { resetValues } from '../../features/form/form-slice';
 import { Container, Stack } from '@chakra-ui/react';
 import { useLocation } from 'react-router-dom';
 
@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(formActions.resetValues());
+    dispatch(resetValues());
   }, [pathname, dispatch]);
 
   return (
