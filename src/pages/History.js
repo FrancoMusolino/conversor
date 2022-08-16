@@ -15,7 +15,7 @@ const History = () => {
 
   return (
     <Stack
-      height='78vh'
+      height='calc(78vh - 70px)'
       gap={5}
       alignItems='center'
       overflowY='scroll'

@@ -1,12 +1,10 @@
 import React from 'react';
-
+import { useFetchCurrenciesQuery } from '../../features/currencies/currencies-api-slice';
 import { Select, FormControl, FormErrorMessage } from '@chakra-ui/react';
 import { Field } from 'formik';
 
-import { useCurrenciesData } from '../../hooks/useCurrenciesData';
-
 const FormSelect = ({ name }) => {
-  const { data: options } = useCurrenciesData();
+  const { data } = useFetchCurrenciesQuery();
 
   return (
     <Field name={name}>
@@ -16,8 +14,8 @@ const FormSelect = ({ name }) => {
           isInvalid={form.errors[name] && form.touched[name]}
         >
           <Select placeholder='-' {...field}>
-            {options?.data.map(option => (
-              <option key={option.key} value={option.value}>
+            {data?.map((option) => (
+              <option key={option.value} value={option.value}>
                 {field.value === option.value
                   ? option.value
                   : option.currencyName}

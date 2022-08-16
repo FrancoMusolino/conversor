@@ -1,6 +1,6 @@
 import { formatHistoryDate } from '../../utils';
 
-export const addConversionToHistory = (history, newConversion) => {
+export const addConversionToHistoryUtil = (history, newConversion) => {
   let dateOfConversion = formatHistoryDate(newConversion.date);
 
   return {

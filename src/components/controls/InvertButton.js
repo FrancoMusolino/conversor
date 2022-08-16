@@ -1,10 +1,10 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import * as formActions from '../../redux/form/form-actions';
+import { invertValues } from '../../features/form/form-slice';
+import { useFormikContext } from 'formik';
 import { Icon } from '@chakra-ui/icons';
 
 import Button from './Button';
-import { useFormikContext } from 'formik';
 
 const InvertButton = ({ value }) => {
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ const InvertButton = ({ value }) => {
     values.toCurrency = fromValue;
 
     setValues(values);
-    dispatch(formActions.invertValues());
+    dispatch(invertValues());
   };
 
   return (

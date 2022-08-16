@@ -1,9 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import * as formActions from '../redux/form/form-actions';
+import { doConversion } from '../features/form/form-slice';
 import { Formik, Form } from 'formik';
 import { initialValues, validationSchema } from '../formik/index';
-
 import { Stack, Flex, useToast } from '@chakra-ui/react';
 
 import ControlsContainer from '../components/controls/ControlsContainer';
@@ -14,7 +13,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const chakraToast = useToast();
 
-  const toast = config =>
+  const toast = (config) =>
     chakraToast({
       duration: 1200,
       isClosable: true,
@@ -23,7 +22,7 @@ const Home = () => {
 
   const handleSubmit = async (values, actions) => {
     try {
-      await dispatch(formActions.doConversion(values));
+      await dispatch(doConversion(values));
       toast({
         title: 'Conversión Exitosa',
         status: 'success',

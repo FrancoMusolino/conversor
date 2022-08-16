@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormLabel, Stack } from '@chakra-ui/react';
-import CurrencyFormIcon from './CurrencyFormIcon';
 
+import CurrencyFormIcon from './CurrencyFormIcon';
 import FormInput from './FormInput';
 import FormSelect from './FormSelect';
 

@@ -1,7 +1,8 @@
 import React from 'react';
 import { Grid, GridItem } from '@chakra-ui/react';
-import SingleControl from './SingleControl';
 import { controls } from '../../data';
+
+import SingleControl from './SingleControl';
 
 const ControlsContainer = () => {
   return (
@@ -11,7 +12,7 @@ const ControlsContainer = () => {
       justifyContent='center'
       gap={4}
     >
-      {controls?.map(control => (
+      {controls?.map((control) => (
         <GridItem justifySelf='center' key={control.value}>
           <SingleControl type={control.type} {...control} />
         </GridItem>
