@@ -21,6 +21,14 @@ const Home = () => {
     });
 
   const handleSubmit = async (values, actions) => {
+    if (!navigator.onLine) {
+      toast({
+        title: 'No hay conexión a Internet 😢',
+        status: 'info',
+      });
+      return;
+    }
+
     try {
       await dispatch(doConversion(values));
       toast({
