@@ -2401,7 +2401,7 @@ This is generally NOT safe. Learn more at https://bit.ly/wb-precache`;
   // sw.js
   precacheAndRoute(self.__WB_MANIFEST);
   registerRoute(
-    ({ url }) => url.origin === "https://api.frankfurter.app",
+    ({ url }) => url.href === "https://api.frankfurter.app/currencies",
     new NetworkFirst({ cacheName: "api-response" })
   );
 })();

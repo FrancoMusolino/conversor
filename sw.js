@@ -5,6 +5,10 @@ import { NetworkFirst } from 'workbox-strategies';
 precacheAndRoute(self.__WB_MANIFEST);
 
 registerRoute(
-  ({ url }) => url.origin === 'https://api.frankfurter.app',
+  ({ url }) => url.href === 'https://api.frankfurter.app/currencies',
   new NetworkFirst({ cacheName: 'api-response' })
 );
+
+// self.addEventListener('install', (e) => {
+//   self.skipWaiting();
+// });
