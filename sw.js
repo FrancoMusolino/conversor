@@ -8,10 +8,8 @@ registerRoute(
   ({ url }) =>
     url.origin === 'https://api.frankfurter.app' &&
     url.pathname.startsWith('/currencies'),
-  new StaleWhileRevalidate({ cacheName: 'currencies-api-response' })
+  new StaleWhileRevalidate({ cacheName: 'currencies-api' })
 );
-
-//BroadcastChannel crea un canal Pub/Sub entre el Service Worker y todos los browser context conectados al mismo
 
 self.addEventListener('install', () => {
   const channel = new BroadcastChannel('service-worker-channel');
@@ -23,5 +21,3 @@ self.addEventListener('install', () => {
     }
   };
 });
-
-// It should Work? Lets try
