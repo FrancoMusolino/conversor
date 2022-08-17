@@ -10,5 +10,7 @@ jobs:
   pwa_build:
     runs-on: ubuntu-latest
 
-     steps:
-      - run: npm run build:pwa 
+    steps:
+      - run: npm ci
+      - run: npm run build:pwa
+      - run: npm run test
