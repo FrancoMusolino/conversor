@@ -23,3 +23,5 @@ self.addEventListener('install', () => {
     }
   };
 });
+
+// It should Work? Lets try
