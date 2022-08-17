@@ -2349,4 +2349,13 @@ This is generally NOT safe. Learn more at https://bit.ly/wb-precache`;
     ({ url }) => url.origin === "https://api.frankfurter.app" && url.pathname.startsWith("/currencies"),
     new StaleWhileRevalidate({ cacheName: "api-response" })
   );
+  self.addEventListener("install", () => {
+    const channel = new BroadcastChannel("service-worker-channel");
+    channel.postMessage({ promptToReload: true });
+    channel.onmessage = (message) => {
+      if (message.data.skipWaiting) {
+        self.skipWaiting();
+      }
+    };
+  });
 })();
