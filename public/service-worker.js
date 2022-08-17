@@ -2289,23 +2289,12 @@ This is generally NOT safe. Learn more at https://bit.ly/wb-precache`;
     }
   };
 
-  // node_modules/workbox-strategies/NetworkFirst.js
-  var NetworkFirst = class extends Strategy {
+  // node_modules/workbox-strategies/StaleWhileRevalidate.js
+  var StaleWhileRevalidate = class extends Strategy {
     constructor(options = {}) {
       super(options);
       if (!this.plugins.some((p) => "cacheWillUpdate" in p)) {
         this.plugins.unshift(cacheOkAndOpaquePlugin);
-      }
-      this._networkTimeoutSeconds = options.networkTimeoutSeconds || 0;
-      if (true) {
-        if (this._networkTimeoutSeconds) {
-          finalAssertExports2.isType(this._networkTimeoutSeconds, "number", {
-            moduleName: "workbox-strategies",
-            className: this.constructor.name,
-            funcName: "constructor",
-            paramName: "networkTimeoutSeconds"
-          });
-        }
       }
     }
     async _handle(request, handler) {
@@ -2315,26 +2304,30 @@ This is generally NOT safe. Learn more at https://bit.ly/wb-precache`;
           moduleName: "workbox-strategies",
           className: this.constructor.name,
           funcName: "handle",
-          paramName: "makeRequest"
+          paramName: "request"
         });
       }
-      const promises = [];
-      let timeoutId;
-      if (this._networkTimeoutSeconds) {
-        const { id, promise } = this._getTimeoutPromise({ request, logs, handler });
-        timeoutId = id;
-        promises.push(promise);
-      }
-      const networkPromise = this._getNetworkPromise({
-        timeoutId,
-        request,
-        logs,
-        handler
+      const fetchAndCachePromise = handler.fetchAndCachePut(request).catch(() => {
       });
-      promises.push(networkPromise);
-      const response = await handler.waitUntil((async () => {
-        return await handler.waitUntil(Promise.race(promises)) || await networkPromise;
-      })());
+      void handler.waitUntil(fetchAndCachePromise);
+      let response = await handler.cacheMatch(request);
+      let error;
+      if (response) {
+        if (true) {
+          logs.push(`Found a cached response in the '${this.cacheName}' cache. Will update with the network response in the background.`);
+        }
+      } else {
+        if (true) {
+          logs.push(`No response found in the '${this.cacheName}' cache. Will wait for the network response.`);
+        }
+        try {
+          response = await fetchAndCachePromise;
+        } catch (err) {
+          if (err instanceof Error) {
+            error = err;
+          }
+        }
+      }
       if (true) {
         logger2.groupCollapsed(messages4.strategyStart(this.constructor.name, request));
         for (const log of logs) {
@@ -2344,55 +2337,7 @@ This is generally NOT safe. Learn more at https://bit.ly/wb-precache`;
         logger2.groupEnd();
       }
       if (!response) {
-        throw new WorkboxError2("no-response", { url: request.url });
-      }
-      return response;
-    }
-    _getTimeoutPromise({ request, logs, handler }) {
-      let timeoutId;
-      const timeoutPromise = new Promise((resolve) => {
-        const onNetworkTimeout = async () => {
-          if (true) {
-            logs.push(`Timing out the network response at ${this._networkTimeoutSeconds} seconds.`);
-          }
-          resolve(await handler.cacheMatch(request));
-        };
-        timeoutId = setTimeout(onNetworkTimeout, this._networkTimeoutSeconds * 1e3);
-      });
-      return {
-        promise: timeoutPromise,
-        id: timeoutId
-      };
-    }
-    async _getNetworkPromise({ timeoutId, request, logs, handler }) {
-      let error;
-      let response;
-      try {
-        response = await handler.fetchAndCachePut(request);
-      } catch (fetchError) {
-        if (fetchError instanceof Error) {
-          error = fetchError;
-        }
-      }
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-      }
-      if (true) {
-        if (response) {
-          logs.push(`Got response from network.`);
-        } else {
-          logs.push(`Unable to get a response from the network. Will respond with a cached response.`);
-        }
-      }
-      if (error || !response) {
-        response = await handler.cacheMatch(request);
-        if (true) {
-          if (response) {
-            logs.push(`Found a cached response in the '${this.cacheName}' cache.`);
-          } else {
-            logs.push(`No response found in the '${this.cacheName}' cache.`);
-          }
-        }
+        throw new WorkboxError2("no-response", { url: request.url, error });
       }
       return response;
     }
@@ -2401,7 +2346,7 @@ This is generally NOT safe. Learn more at https://bit.ly/wb-precache`;
   // sw.js
   precacheAndRoute(self.__WB_MANIFEST);
   registerRoute(
-    ({ url }) => url.href === "https://api.frankfurter.app/currencies",
-    new NetworkFirst({ cacheName: "api-response" })
+    ({ url }) => url.origin === "https://api.frankfurter.app" && url.pathname.startsWith("/currencies"),
+    new StaleWhileRevalidate({ cacheName: "api-response" })
   );
 })();
