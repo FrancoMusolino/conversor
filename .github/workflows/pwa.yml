@@ -16,8 +16,5 @@ jobs:
 
     steps:
       - run: npm ci
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
       - run: npm run build:pwa
       - run: npm run test
