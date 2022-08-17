@@ -11,6 +11,15 @@ registerRoute(
   new StaleWhileRevalidate({ cacheName: 'api-response' })
 );
 
-// self.addEventListener('install', (e) => {
-//   self.skipWaiting();
-// });
+//BroadcastChannel crea un canal Pub/Sub entre el Service Worker y todos los browser context conectados al mismo
+
+self.addEventListener('install', () => {
+  const channel = new BroadcastChannel('service-worker-channel');
+  channel.postMessage({ promptToReload: true });
+
+  channel.onmessage = (message) => {
+    if (message.data.skipWaiting) {
+      self.skipWaiting();
+    }
+  };
+});

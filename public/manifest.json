@@ -31,13 +31,19 @@
       "src": "image/icon_x192.png",
       "type": "image/png",
       "sizes": "192x192",
-      "purpose": "maskable"
+      "purpose": "any"
     },
     {
       "src": "image/icon.png",
       "type": "image/png",
       "sizes": "255x255",
-      "purpose": "maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "image/icon_x512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
     }
   ],
   "start_url": "/",
