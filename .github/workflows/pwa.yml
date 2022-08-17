@@ -1,0 +1,14 @@
+name: Build PWA
+
+on:
+  push:
+    branches: ['main']
+  pull_request:
+    branches: ['main']
+
+jobs:
+  pwa_build:
+    runs-on: ubuntu-latest
+
+     steps:
+      - run: npm run build:pwa 
