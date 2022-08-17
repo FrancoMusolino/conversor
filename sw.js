@@ -8,7 +8,7 @@ registerRoute(
   ({ url }) =>
     url.origin === 'https://api.frankfurter.app' &&
     url.pathname.startsWith('/currencies'),
-  new StaleWhileRevalidate({ cacheName: 'api-response' })
+  new StaleWhileRevalidate({ cacheName: 'currencies-api-response' })
 );
 
 //BroadcastChannel crea un canal Pub/Sub entre el Service Worker y todos los browser context conectados al mismo

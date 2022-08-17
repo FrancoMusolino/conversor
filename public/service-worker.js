@@ -2347,7 +2347,7 @@ This is generally NOT safe. Learn more at https://bit.ly/wb-precache`;
   precacheAndRoute(self.__WB_MANIFEST);
   registerRoute(
     ({ url }) => url.origin === "https://api.frankfurter.app" && url.pathname.startsWith("/currencies"),
-    new StaleWhileRevalidate({ cacheName: "api-response" })
+    new StaleWhileRevalidate({ cacheName: "currencies-api-response" })
   );
   self.addEventListener("install", () => {
     const channel = new BroadcastChannel("service-worker-channel");
