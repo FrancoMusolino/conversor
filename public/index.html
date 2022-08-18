@@ -45,20 +45,7 @@
       const isProduction = '%NODE_ENV%' === 'production'
 
       if (isProduction && 'serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker.js').then(() => {
-          const channel = new BroadcastChannel('service-worker-channel');
-          channel.onmessage = (message) => {
-            if(message.data.promptToReload) {
-              if(confirm('Actualización disponible. ¿Quieres recargar la página?')) {
-                channel.postMessage({ skipWaiting: true })
-              }
-            }
-          }
-        }).catch((err) => console.error(err))
-
-        navigator.serviceWorker.addEventListener("controllerchange", () => {
-          window.location.reload()
-        })
+        navigator.serviceWorker.register('./service-worker.js')
       }
     </script>
   </body>

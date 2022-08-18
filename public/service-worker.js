@@ -2350,12 +2350,6 @@ This is generally NOT safe. Learn more at https://bit.ly/wb-precache`;
     new StaleWhileRevalidate({ cacheName: "currencies-api" })
   );
   self.addEventListener("install", () => {
-    const channel = new BroadcastChannel("service-worker-channel");
-    channel.postMessage({ promptToReload: true });
-    channel.onmessage = (message) => {
-      if (message.data.skipWaiting) {
-        self.skipWaiting();
-      }
-    };
+    self.skipWaiting();
   });
 })();

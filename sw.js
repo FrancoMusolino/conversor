@@ -12,12 +12,5 @@ registerRoute(
 );
 
 self.addEventListener('install', () => {
-  const channel = new BroadcastChannel('service-worker-channel');
-  channel.postMessage({ promptToReload: true });
-
-  channel.onmessage = (message) => {
-    if (message.data.skipWaiting) {
-      self.skipWaiting();
-    }
-  };
+  self.skipWaiting();
 });
