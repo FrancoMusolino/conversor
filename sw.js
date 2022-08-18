@@ -8,7 +8,7 @@ registerRoute(
   ({ url }) =>
     url.origin === 'https://api.frankfurter.app' &&
     url.pathname.startsWith('/currencies'),
-  new StaleWhileRevalidate({ cacheName: 'currencies-api-response' })
+  new StaleWhileRevalidate({ cacheName: 'currencies-response' })
 );
 
 self.addEventListener('install', () => {
