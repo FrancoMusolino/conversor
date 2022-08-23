@@ -26,8 +26,9 @@ const History = () => {
       }}
     >
       {Object.keys(historyOfConversions).length ? (
-        Object.entries(historyOfConversions).map(
-          ([date, conversions], fatherIndex, arr) => {
+        Object.entries(historyOfConversions)
+          .reverse()
+          .map(([date, conversions], fatherIndex, arr) => {
             if (arr[fatherIndex - 1]) {
               baseDelay *= arr[fatherIndex - 1][1].length + 1;
             }
@@ -55,8 +56,7 @@ const History = () => {
                 ))}
               </Stack>
             );
-          }
-        )
+          })
       ) : (
         <EmptyHistory />
       )}
