@@ -9,7 +9,9 @@ import EmptyHistory from '../components/EmptyHistory/EmptyHistory';
 import CardHistory from '../components/CardHistory/CardHistory';
 
 const History = () => {
-  const { historyOfConversions } = useSelector((state) => state.history);
+  const history = useSelector((state) =>
+    Object.entries(state.history.historyOfConversions).reverse()
+  );
 
   let baseDelay = 0.2;
 
@@ -25,38 +27,36 @@ const History = () => {
         },
       }}
     >
-      {Object.keys(historyOfConversions).length ? (
-        Object.entries(historyOfConversions)
-          .reverse()
-          .map(([date, conversions], fatherIndex, arr) => {
-            if (arr[fatherIndex - 1]) {
-              baseDelay *= arr[fatherIndex - 1][1].length + 1;
-            }
+      {history.length ? (
+        history.map(([date, conversions], fatherIndex, arr) => {
+          if (arr[fatherIndex - 1]) {
+            baseDelay *= arr[fatherIndex - 1][1].length + 1;
+          }
 
-            return (
-              <Stack key={date} gap={3}>
-                <Text
-                  as={motion.p}
-                  custom={{ delay: baseDelay }}
-                  initial='hidden'
-                  animate='visible'
-                  variants={opacityVariants}
-                  marginLeft='0.3rem'
-                  color='brand.textWhite'
-                  lineHeight='18px'
-                >
-                  {date}
-                </Text>
-                {conversions.map((conversion, index) => (
-                  <CardHistory
-                    key={conversion.id}
-                    delay={baseDelay + 0.2 * (index + 1)}
-                    {...conversion}
-                  />
-                ))}
-              </Stack>
-            );
-          })
+          return (
+            <Stack key={date} gap={3}>
+              <Text
+                as={motion.p}
+                custom={{ delay: baseDelay }}
+                initial='hidden'
+                animate='visible'
+                variants={opacityVariants}
+                marginLeft='0.3rem'
+                color='brand.textWhite'
+                lineHeight='18px'
+              >
+                {date}
+              </Text>
+              {conversions.map((conversion, index) => (
+                <CardHistory
+                  key={conversion.id}
+                  delay={baseDelay + 0.2 * (index + 1)}
+                  {...conversion}
+                />
+              ))}
+            </Stack>
+          );
+        })
       ) : (
         <EmptyHistory />
       )}
