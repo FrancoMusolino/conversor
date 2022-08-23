@@ -10,7 +10,7 @@ import CardHistory from '../components/CardHistory/CardHistory';
 
 const History = () => {
   const history = useSelector((state) =>
-    Object.entries(state.history.historyOfConversions).reverse()
+    Object.entries(state.history.historyOfConversions)
   );
 
   let baseDelay = 0.2;
@@ -29,9 +29,6 @@ const History = () => {
     >
       {history.length ? (
         history.map(([date, conversions], fatherIndex, arr) => {
-          console.log(arr);
-          console.log(baseDelay);
-
           if (arr[fatherIndex - 1]) {
             baseDelay *= arr[fatherIndex - 1][1].length + 1;
           }
