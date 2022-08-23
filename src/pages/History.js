@@ -10,7 +10,7 @@ import CardHistory from '../components/CardHistory/CardHistory';
 
 const History = () => {
   const history = useSelector((state) =>
-    Object.entries(state.history.historyOfConversions)
+    Object.entries(state.history.historyOfConversions).reverse()
   );
 
   let baseDelay = 0.2;
@@ -29,8 +29,14 @@ const History = () => {
     >
       {history.length ? (
         history.map(([date, conversions], fatherIndex, arr) => {
+          /*El base delay (inicialmente en 0.2) se acumula multiplicando su valor inicial por la longitud de items del anterior elemento más 2. 
+            Este 2 representa:
+            1. El texto base que indica el día, el cual no está incluida en el array de items, pero forma parte del delay
+            2. El delay al siguiente texto entrante
+           */
+
           if (arr[fatherIndex - 1]) {
-            baseDelay *= arr[fatherIndex - 1][1].length + 1;
+            baseDelay += 0.2 * (arr[fatherIndex - 1][1].length + 2);
           }
 
           return (
